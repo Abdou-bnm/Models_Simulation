@@ -9,7 +9,7 @@ from src.simulate_mg1 import simulate_mg1
 
 # Configuration
 mu = 1.0
-num_customers = 1000000
+num_customers = 10000
 lambda_values = np.arange(0.1, 1.0, 0.1)
 num_repeats = 100
 
