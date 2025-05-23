@@ -32,8 +32,8 @@ def main():
         output_csv="data/theoretical_comparison.csv"
     )
 
-    print("✅ Simulation pipeline completed successfully.")
-    print("📁 Results saved in /data and /plots")
+    print("Simulation pipeline completed successfully.")
+    print("Results saved in /data and /plots")
 
 if __name__ == "__main__":
     main()

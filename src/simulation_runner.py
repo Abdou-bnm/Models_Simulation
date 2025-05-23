@@ -10,7 +10,7 @@ from src.simulate_mg1 import simulate_mg1
 mu = 1.0
 num_customers = 100000
 lambda_values = np.arange(0.1, 0.95, 0.05)
-num_repeats = 10
+num_repeats = 100
 
 # General distribution functions
 def uniform_interarrival():
