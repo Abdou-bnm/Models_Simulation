@@ -4,7 +4,10 @@ import os
 
 def plot_metric(df, x_col, y_col, yerr_col, title, ylabel, filename):
     plt.figure(figsize=(8, 5))
-    plt.errorbar(df[x_col], df[y_col], yerr=df[yerr_col], fmt='-o', capsize=5)
+    if yerr_col is not None and yerr_col in df.columns:
+        plt.errorbar(df[x_col], df[y_col], yerr=df[yerr_col], fmt='-o', capsize=5)
+    else:
+        plt.plot(df[x_col], df[y_col], '-o')
     plt.grid(True)
     plt.title(title)
     plt.xlabel("λ (arrival rate)")
