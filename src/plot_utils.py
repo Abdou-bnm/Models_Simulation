@@ -3,18 +3,6 @@ import pandas as pd
 import os
 
 def plot_metric(df, x_col, y_col, yerr_col=None, title="", ylabel="", filename=""):
-    """
-    Plot a single model's metric with optional error bars.
-
-    Parameters:
-    - df: DataFrame with the metric data
-    - x_col: Column name for x-axis (usually 'lambda')
-    - y_col: Column name for y-axis (e.g., 'avg_response_time')
-    - yerr_col: Optional column for error bars (e.g., 'std_response_time')
-    - title: Plot title
-    - ylabel: Label for the y-axis
-    - filename: Output filename to save in 'plots/' folder
-    """
     plt.figure(figsize=(8, 5))
     if yerr_col and yerr_col in df.columns:
         plt.errorbar(df[x_col], df[y_col], yerr=df[yerr_col], fmt='-o', capsize=5)
@@ -30,14 +18,6 @@ def plot_metric(df, x_col, y_col, yerr_col=None, title="", ylabel="", filename="
     plt.close()
 
 def plot_all_models(metric, ylabel, filename_suffix):
-    """
-    Plot the given metric for all three models on one graph.
-
-    Parameters:
-    - metric: Metric column name (e.g., 'avg_response_time')
-    - ylabel: Y-axis label
-    - filename_suffix: Filename to use for the output PNG
-    """
     models = ["mm1", "gm1", "mg1"]
     colors = ['r', 'g', 'b']
     plt.figure(figsize=(8, 5))
@@ -58,9 +38,6 @@ def plot_all_models(metric, ylabel, filename_suffix):
     plt.close()
 
 def generate_all_plots():
-    """
-    Generate all individual and combined plots for response time, waiting time, and utilization.
-    """
     for model in ["mm1", "gm1", "mg1"]:
         df = pd.read_csv(f"data/{model}_results.csv")
 
@@ -73,7 +50,6 @@ def generate_all_plots():
         plot_metric(df, "lambda", "utilization", None,
                     f"Utilization - {model.upper()}", "Server Utilization", f"{model}_utilization.png")
 
-    # Combined model comparisons
     plot_all_models("avg_response_time", "Mean Response Time", "combined_response_time")
     plot_all_models("avg_waiting_time", "Mean Waiting Time", "combined_waiting_time")
     plot_all_models("utilization", "Server Utilization", "combined_utilization")

@@ -1,19 +1,6 @@
 import numpy as np
 
 def simulate_mm1(lambda_rate, mu_rate, num_customers, seed=None):
-    """
-    Simulate an M/M/1 queue using exponential inter-arrival and service times.
-    Uses numpy.random.default_rng() for reproducible and modular random generation.
-
-    Parameters:
-    - lambda_rate: Arrival rate (λ)
-    - mu_rate: Service rate (μ)
-    - num_customers: Number of customers to simulate
-    - seed: Optional random seed
-
-    Returns:
-    - Dictionary with avg waiting time, response time, and utilization
-    """
     rng = np.random.default_rng(seed)
 
     clock = 0.0

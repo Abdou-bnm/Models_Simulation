@@ -9,23 +9,18 @@ def ensure_directories():
     os.makedirs("plots", exist_ok=True)
 
 def main():
-    print("🚀 Starting Queue Simulation Project")
+    print("Starting Queue Simulation Project")
 
-    # Step 1: Setup
     ensure_directories()
 
-    # Step 2: Run simulations (MM1, GM1, MG1)
     run_all()
 
-    # Step 3: Generate plots
     generate_all_plots()
 
-    # Step 4: Generate theoretical results for MM1
     lambda_values = np.arange(0.1, 0.95, 0.05)
     mu = 1.0
     theory_df = generate_mm1_theoretical_table(lambda_values, mu)
 
-    # Step 5: Compare theory vs simulation
     compare_theory_vs_simulation(
         sim_file="data/mm1_results.csv",
         theory_df=theory_df,

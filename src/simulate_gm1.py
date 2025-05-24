@@ -1,20 +1,6 @@
 import numpy as np
 
 def simulate_gm1(lambda_rate, mu_rate, num_customers, inter_arrival_func, seed=None):
-    """
-    Simulate a G/M/1 queue where arrivals follow a general distribution (provided),
-    and service times are exponential. Uses numpy.random.default_rng for clean RNG.
-
-    Parameters:
-    - lambda_rate: Arrival rate (λ)
-    - mu_rate: Service rate (μ)
-    - num_customers: Number of customers to simulate
-    - inter_arrival_func: Function (lambda_rate, rng) -> float
-    - seed: Optional seed for reproducibility
-
-    Returns:
-    - Dictionary with average waiting time, response time, and utilization
-    """
     rng = np.random.default_rng(seed)
 
     clock = 0.0

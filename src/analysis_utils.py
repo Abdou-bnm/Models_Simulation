@@ -37,31 +37,10 @@ def theoretical_mm1_metrics(lambda_rate, mu_rate):
     }
 
 def generate_mm1_theoretical_table(lambda_values, mu):
-    """
-    Compute theoretical results for a list of λ values.
-
-    Parameters:
-    - lambda_values: Iterable of λ values
-    - mu: Service rate (μ)
-
-    Returns:
-    - DataFrame with theoretical values for each λ
-    """
     results = [theoretical_mm1_metrics(lam, mu) for lam in lambda_values]
     return pd.DataFrame(results)
 
 def compare_theory_vs_simulation(sim_file, theory_df, output_csv="data/theoretical_comparison.csv"):
-    """
-    Compare theoretical and simulated results for M/M/1.
-
-    Parameters:
-    - sim_file: Path to simulated CSV (e.g., 'data/mm1_results.csv')
-    - theory_df: DataFrame of theoretical results from generate_mm1_theoretical_table
-    - output_csv: Output path to save merged results
-
-    Returns:
-    - Merged DataFrame with error columns
-    """
     sim_df = pd.read_csv(sim_file)
     merged = sim_df.merge(theory_df, on=["lambda", "mu"], suffixes=("_sim", "_theory"))
 
